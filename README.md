@@ -6,3 +6,4 @@ Frontend do projeto de uma loja de produtos de limpeza desenvolvido para a maté
   - hotfix_exemplo
   - feat_exemplo
   - config_exemplo
+  - build_exemplo
