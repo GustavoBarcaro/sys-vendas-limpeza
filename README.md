@@ -1,14 +1,3 @@
-# sys-vendas-limpeza
-
-Frontend do projeto de uma loja de produtos de limpeza desenvolvido para a matéria de projetos
-
-- branches pattern example:
-  - fix_example
-  - hotfix_example
-  - feat_example
-  - config_example
-  - build_example
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
