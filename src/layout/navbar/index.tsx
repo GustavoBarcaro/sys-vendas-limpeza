@@ -1,13 +1,14 @@
 import React from 'react';
-import styles from './navbar.modules.css';
+import { format } from 'date-fns';
+import styles from './navbar.module.scss';
 
-export default function NavBar() {
+export default function NavBar(): JSX.Element {
   return (
     <header className={styles.header}>
-      <section>
-        <time>19/02/2022 10:24</time>
-        <h2>Nome do sistema</h2>
-        <div>
+      <section className={styles.container}>
+        <time className={styles.date}>{format(new Date(), 'dd/MM/yyyy')}</time>
+        <h2 className={styles.systemName}>Coisa de Faxina</h2>
+        <div className={styles.actions}>
           <div>button</div>
           <div>sair</div>
         </div>
