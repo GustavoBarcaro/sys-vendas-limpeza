@@ -20,6 +20,13 @@
   div + div {
     margin-left: 10px;
   }
+  .logout {
+    font-weight: 400;
+    color: var(--text-primary-light);
+    button {
+      font-size: 1.25rem;
+    }
+  }
 }
 .systemName {
   font-weight: 400;
