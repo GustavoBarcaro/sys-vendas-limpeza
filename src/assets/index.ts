@@ -1,4 +1,5 @@
 import LogoutIcon from './logoutIcon';
+import InfoIcon from './infoIcon';
+import TrashIcon from './trashIcon';
 
-// eslint-disable-next-line import/prefer-default-export
-export { LogoutIcon };
+export { LogoutIcon, InfoIcon, TrashIcon };
