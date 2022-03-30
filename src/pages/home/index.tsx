@@ -5,7 +5,6 @@ function Home(): JSX.Element {
   return (
     <main
       style={{
-        height: '100%',
         display: 'flex',
         justifyContent: 'center',
       }}
