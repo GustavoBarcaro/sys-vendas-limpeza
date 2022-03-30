@@ -5,13 +5,12 @@ function Home(): JSX.Element {
   return (
     <main
       style={{
-        marginTop: '110px',
+        height: '100%',
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <section style={{ width: '80%' }}>
+      <section style={{ width: '80%', marginTop: '110px' }}>
         <Table />
       </section>
     </main>
