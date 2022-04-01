@@ -1,15 +1,11 @@
 import React from 'react';
 import Table from '../../layout/table';
+import styles from './home.module.scss';
 
 function Home(): JSX.Element {
   return (
-    <main
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <section style={{ width: '80%', marginTop: '110px' }}>
+    <main className={styles.home}>
+      <section className={styles.content}>
         <Table />
       </section>
     </main>

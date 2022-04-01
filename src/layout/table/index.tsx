@@ -10,6 +10,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { InfoIcon, TrashIcon } from '../../assets';
 
+import './table.scss';
+
 const value = {
   idVenda: 1,
   datetime: '19/02/2022 14:43',
