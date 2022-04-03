@@ -1,0 +1,28 @@
+.registerButton {
+  .MuiButton-startIcon {
+    margin-right: 16px;
+  }
+}
+
+.options {
+  margin-bottom: 50px;
+}
+
+.registerButton.MuiButtonBase-root {
+  font-size: 24px;
+  background-color: #4bc3f7;
+  padding: 10px 25px;
+  font-size: 24px;
+  color: #ffffff;
+  border-radius: 10px;
+  text-transform: none;
+  display: flex;
+  align-items: center;
+  line-height: 30px;
+  transition: filter 0.2s;
+
+  &:hover {
+    background-color: #4bc3f7;
+    filter: brightness(1.1);
+  }
+}
