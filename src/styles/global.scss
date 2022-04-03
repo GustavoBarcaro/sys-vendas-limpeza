@@ -73,10 +73,18 @@ body {
     border-radius: 10px;
     height: 40px;
     width: 40px;
+    transition: filter 0.2s;
+    &:hover {
+      background-color: #809af6;
+      filter: brightness(1.4);
+    }
   }
   .delete-btn {
     background-color: #eb5858;
     margin-left: 20px;
+    &:hover {
+      background-color: #eb5858;
+    }
   }
 }
 .lines {
