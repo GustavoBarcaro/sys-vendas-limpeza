@@ -6,12 +6,15 @@
 
 .options {
   margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .registerButton.MuiButtonBase-root {
   font-size: 24px;
   background-color: #4bc3f7;
-  padding: 10px 25px;
+  padding: 18px 25px;
   font-size: 24px;
   color: #ffffff;
   border-radius: 10px;

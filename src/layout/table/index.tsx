@@ -8,43 +8,28 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { format } from 'date-fns';
 import { InfoIcon, TrashIcon } from '../../assets';
 import Status from '../../components/status';
+import { SalesItems } from '../../domains/sales';
 
 import './table.scss';
 
-const value = {
-  idVenda: 1,
-  datetime: '19/02/2022 14:43',
-  status: '1',
-  valor: 4500,
-  history: [
-    {
-      date: '2020-01-05',
-      customerId: '11091700',
-      amount: 3,
-    },
-    {
-      date: '2020-01-02',
-      customerId: 'Anonymous',
-      amount: 1,
-    },
-  ],
-};
-
-function Row(props: { row: typeof value }) {
+function Row(props: { row: SalesItems }) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
     <>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }} className="lines">
-        <TableCell align="center">{row.idVenda}</TableCell>
-        <TableCell align="center">{row.datetime}</TableCell>
+        <TableCell align="center">{row.id}</TableCell>
+        <TableCell align="center">
+          {format(Date.parse(row.saleDatetime), 'dd/MM/yyyy yy:mm')}
+        </TableCell>
         <TableCell align="center">
           <Status type={row.status} />
         </TableCell>
-        <TableCell align="center">{row.valor}</TableCell>
+        <TableCell align="center">{row.value}</TableCell>
         <TableCell align="center" className="options">
           <IconButton
             aria-label="expand row"
@@ -82,24 +67,19 @@ function Row(props: { row: typeof value }) {
                 <TableHead className="insideTableHead">
                   <TableRow>
                     <TableCell>Produto</TableCell>
-                    <TableCell align="center">Quantidade</TableCell>
-                    <TableCell align="center">Valor Unitário</TableCell>
-                    <TableCell align="center">Valor Total</TableCell>
+                    <TableCell align="center">Id</TableCell>
+                    <TableCell align="center">Valor</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody className="insideTableBody">
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                  {row.items.map((item) => (
+                    <TableRow key={item.id}>
                       <TableCell component="th" scope="row">
-                        {historyRow.date}
+                        {item.name}
                       </TableCell>
-                      <TableCell align="center">
-                        {historyRow.customerId}
-                      </TableCell>
-                      <TableCell align="center">{historyRow.amount}</TableCell>
-                      <TableCell align="center">
-                        {Math.round(historyRow.amount * row.valor * 100) / 100}
-                      </TableCell>
+                      <TableCell align="center">{item.id}</TableCell>
+
+                      <TableCell align="center">{item.value}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -112,9 +92,11 @@ function Row(props: { row: typeof value }) {
   );
 }
 
-const rows = [value, value, value, value];
+interface CollapsibleTableProps {
+  sales: SalesItems[];
+}
 
-export default function CollapsibleTable() {
+export default function CollapsibleTable({ sales }: CollapsibleTableProps) {
   return (
     <TableContainer>
       <Table aria-label="collapsible table">
@@ -128,8 +110,8 @@ export default function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.idVenda} row={row} />
+          {sales.map((row) => (
+            <Row key={row.id} row={row} />
           ))}
         </TableBody>
       </Table>
