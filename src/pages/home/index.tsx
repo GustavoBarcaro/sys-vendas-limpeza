@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Table from '../../layout/table';
 import TableOptions from '../../layout/tableOptions';
-
 import styles from './home.module.scss';
+import { SalesItems, SalesResponse } from '../../domains/sales';
 
 function Home(): JSX.Element {
+  const [searchedSales, setSearchedSales] = useState<Array<SalesItems>>([]);
+  const [sales, setSales] = useState<Array<SalesItems>>([]);
+  useEffect(() => {
+    setSearchedSales(sales);
+  }, [sales]);
+  useEffect(() => {
+    axios
+      .get('http://localhost:8080/api/sales', {
+        withCredentials: false,
+      })
+      .then(({ data }) => {
+        const formattedResponse = (data as Array<SalesResponse>).map(
+          (each) => ({
+            ...each,
+            items: each.items.map((eachItem) => eachItem.product),
+          }),
+        );
+        setSales(formattedResponse);
+      });
+  }, []);
   return (
     <main className={styles.home}>
       <section className={styles.content}>
-        <TableOptions />
-        <Table />
+        <TableOptions setSearchedSales={setSearchedSales} sales={sales} />
+        <Table sales={searchedSales} />
       </section>
     </main>
   );
