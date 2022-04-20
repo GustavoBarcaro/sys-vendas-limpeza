@@ -9,13 +9,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { InfoIcon, TrashIcon } from '../../assets';
+import Status from '../../components/status';
 
 import './table.scss';
 
 const value = {
   idVenda: 1,
   datetime: '19/02/2022 14:43',
-  status: 1,
+  status: '1',
   valor: 4500,
   history: [
     {
@@ -40,7 +41,9 @@ function Row(props: { row: typeof value }) {
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }} className="lines">
         <TableCell align="center">{row.idVenda}</TableCell>
         <TableCell align="center">{row.datetime}</TableCell>
-        <TableCell align="center">{row.status}</TableCell>
+        <TableCell align="center">
+          <Status type={row.status} />
+        </TableCell>
         <TableCell align="center">{row.valor}</TableCell>
         <TableCell align="center" className="options">
           <IconButton
