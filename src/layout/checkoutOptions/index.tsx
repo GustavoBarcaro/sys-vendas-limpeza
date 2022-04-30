@@ -12,7 +12,7 @@ function CheckoutOptions(): JSX.Element {
   };
 
   return (
-    <section className="checkoutOptions" style={{}}>
+    <section className="checkoutOptions">
       <Button
         className="goBackButton"
         startIcon={<LeftArrowIcon />}
