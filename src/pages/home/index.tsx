@@ -4,6 +4,7 @@ import Table from '../../layout/table';
 import TableOptions from '../../layout/tableOptions';
 import styles from './home.module.scss';
 import { SalesItems, SalesResponse } from '../../domains/sales';
+import { SERVICE_BASE_URI } from '../../config/services';
 
 function Home(): JSX.Element {
   const [searchedSales, setSearchedSales] = useState<Array<SalesItems>>([]);
@@ -13,7 +14,7 @@ function Home(): JSX.Element {
   }, [sales]);
   useEffect(() => {
     axios
-      .get('http://localhost:8080/api/sales', {
+      .get(`${SERVICE_BASE_URI}/api/sales`, {
         withCredentials: false,
       })
       .then(({ data }) => {

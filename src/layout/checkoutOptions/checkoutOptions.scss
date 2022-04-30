@@ -1,7 +1,27 @@
 .goBackButton.MuiButtonBase-root {
-    padding: 10px 80px;
-    border: 1px solid #949494;
-    border-radius: 0.625rem;
-    color: #3a3a3a;
-    font-size: 1rem;
+  padding: 10px 80px;
+  border: 1px solid #949494;
+  border-radius: 0.625rem;
+  color: #3a3a3a;
+  font-size: 1rem;
+}
+
+.confirmButton.MuiButtonBase-root {
+  border-radius: 0.625rem;
+  padding: 10px 80px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #33cb5d;
+  transition: filter 0.2s;
+
+  &:hover {
+    background-color: #33cb5d;
+    filter: brightness(0.9);
   }
+}
+
+.checkoutOptions {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
