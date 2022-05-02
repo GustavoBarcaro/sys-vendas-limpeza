@@ -12,13 +12,21 @@ function CheckoutOptions(): JSX.Element {
   };
 
   return (
-    <section>
+    <section className="checkoutOptions">
       <Button
         className="goBackButton"
         startIcon={<LeftArrowIcon />}
         onClick={handleGoToSales}
       >
         Voltar
+      </Button>
+      <Button
+        className="confirmButton"
+        onClick={() => {
+          // this is intentional
+        }}
+      >
+        Confirmar
       </Button>
     </section>
   );
