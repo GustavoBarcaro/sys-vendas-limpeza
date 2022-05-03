@@ -1,0 +1,52 @@
+.tableBodyCheckout {
+  & .MuiTableRow-root {
+    border-bottom: 1px solid #d8d6d6;
+  }
+}
+
+.TableTotal.MuiTableRow-root {
+  background-color: rgba(196, 196, 196, 0.3);
+  .MuiTableCell-root {
+    font-size: 24px;
+    color: #3a3a3a;
+    font-weight: 400;
+  }
+}
+
+.MuiTable-root {
+  .tableHead {
+    background-color: rgba(196, 196, 196, 0.3);
+
+    .MuiTableCell-root {
+      font-size: 24px;
+      color: #3a3a3a;
+      font-weight: 400;
+      border-style: solid;
+      border-width: 0px 1px;
+      border-color: #d8d6d6;
+    }
+  }
+}
+
+.optionsCheckout {
+  .MuiIconButton-root {
+    background-color: #809af6;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+  }
+  .delete-btn {
+    background-color: #eb5858;
+  }
+}
+.lines {
+  .MuiTableCell-root {
+    font-size: 24px;
+    color: #3a3a3a;
+    font-family: inherit;
+    font-weight: 400;
+    border-style: solid;
+    border-width: 0px 1px;
+    border-color: #d8d6d6;
+  }
+}
