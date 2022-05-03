@@ -4,22 +4,25 @@ export interface Sales {
   status: string;
   value: number;
 }
+export interface Product {
+  id: number;
+  name: string;
+  value: number;
+}
+
+export interface ProductCart extends Product {
+  qtd: number;
+}
+
+export type Cart = ProductCart[];
 
 export interface SalesItems extends Sales {
-  items: Array<{
-    id: number;
-    name: string;
-    value: number;
-  }>;
+  items: Array<Product>;
 }
 
 export interface SalesResponse extends Sales {
   items: Array<{
     id: number;
-    product: {
-      id: number;
-      name: string;
-      value: number;
-    };
+    product: Product;
   }>;
 }

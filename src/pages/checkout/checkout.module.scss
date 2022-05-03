@@ -1,4 +1,19 @@
 .checkout {
+  margin-top: 60px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  & > section {
+    width: 80%;
+  }
+}
+
+.searchProductsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.checkoutTableContainer {
+  margin-top: 2.5rem;
 }

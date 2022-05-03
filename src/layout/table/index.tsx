@@ -12,6 +12,7 @@ import { format } from 'date-fns';
 import { InfoIcon, TrashIcon } from '../../assets';
 import Status from '../../components/status';
 import { SalesItems } from '../../domains/sales';
+import { formatNumberBRL } from '../../config/function';
 
 import './table.scss';
 
@@ -29,7 +30,7 @@ function Row(props: { row: SalesItems }) {
         <TableCell align="center">
           <Status type={row.status} />
         </TableCell>
-        <TableCell align="center">{row.value}</TableCell>
+        <TableCell align="center">{formatNumberBRL(row.value)}</TableCell>
         <TableCell align="center" className="options">
           <IconButton
             aria-label="expand row"
@@ -109,7 +110,7 @@ export default function CollapsibleTable({ sales }: CollapsibleTableProps) {
             <TableCell align="center">Opções</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody className="tableBody">
           {sales.map((row) => (
             <Row key={row.id} row={row} />
           ))}
