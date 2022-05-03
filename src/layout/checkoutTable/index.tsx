@@ -54,7 +54,7 @@ function Row(props: {
       <TableCell align="center">
         {formatNumberBRL(row.value * row.qtd)}
       </TableCell>
-      <TableCell align="center" className="options">
+      <TableCell align="center" className="optionsCheckout">
         <IconButton
           aria-label="expand row"
           size="small"
