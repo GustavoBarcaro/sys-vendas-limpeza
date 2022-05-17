@@ -24,8 +24,11 @@ function TableOptions({
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement> | undefined,
   ) => {
     const event = e as React.ChangeEvent<HTMLInputElement>;
-    const searchedSales = sales.filter(
-      (each) => `${each.id}` === event.target.value,
+    const searchedSales = sales.filter((each) =>
+      each.id
+        .split('-')[0]
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase()),
     );
     setSearchedSales(event.target.value !== '' ? searchedSales : sales);
   };

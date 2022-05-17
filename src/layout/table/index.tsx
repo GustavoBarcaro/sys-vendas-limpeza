@@ -16,14 +16,22 @@ import { formatNumberBRL } from '../../config/function';
 
 import './table.scss';
 
-function Row(props: { row: SalesItems }) {
-  const { row } = props;
+type handleDeleteSaleType = (
+  // eslint-disable-next-line no-unused-vars
+  id: string,
+) => void;
+
+function Row(props: {
+  row: SalesItems;
+  handleDeleteSale: handleDeleteSaleType;
+}) {
+  const { row, handleDeleteSale } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
     <>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }} className="lines">
-        <TableCell align="center">{row.id}</TableCell>
+        <TableCell align="center">{row.id.split('-')[0]}</TableCell>
         <TableCell align="center">
           {format(Date.parse(row.saleDatetime), 'dd/MM/yyyy yy:mm')}
         </TableCell>
@@ -44,7 +52,7 @@ function Row(props: { row: SalesItems }) {
             size="small"
             className="delete-btn"
             onClick={() => {
-              // this is intentional
+              handleDeleteSale(row.id);
             }}
           >
             <TrashIcon />
@@ -68,8 +76,9 @@ function Row(props: { row: SalesItems }) {
                 <TableHead className="insideTableHead">
                   <TableRow>
                     <TableCell>Produto</TableCell>
-                    <TableCell align="center">Id</TableCell>
-                    <TableCell align="center">Valor</TableCell>
+                    <TableCell align="center">Quantidade</TableCell>
+                    <TableCell align="center">Valor Unitário</TableCell>
+                    <TableCell align="center">Valor Total</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody className="insideTableBody">
@@ -78,9 +87,15 @@ function Row(props: { row: SalesItems }) {
                       <TableCell component="th" scope="row">
                         {item.name}
                       </TableCell>
-                      <TableCell align="center">{item.id}</TableCell>
-
-                      <TableCell align="center">{item.value}</TableCell>
+                      <TableCell align="center" component="th">
+                        {item.quantity}
+                      </TableCell>
+                      <TableCell align="center">
+                        {formatNumberBRL(item.value)}
+                      </TableCell>
+                      <TableCell align="center">
+                        {formatNumberBRL(item.amount)}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -95,9 +110,13 @@ function Row(props: { row: SalesItems }) {
 
 interface CollapsibleTableProps {
   sales: SalesItems[];
+  handleDeleteSale: handleDeleteSaleType;
 }
 
-export default function CollapsibleTable({ sales }: CollapsibleTableProps) {
+export default function CollapsibleTable({
+  sales,
+  handleDeleteSale,
+}: CollapsibleTableProps) {
   return (
     <TableContainer>
       <Table aria-label="collapsible table">
@@ -112,10 +131,13 @@ export default function CollapsibleTable({ sales }: CollapsibleTableProps) {
         </TableHead>
         <TableBody className="tableBody">
           {sales.map((row) => (
-            <Row key={row.id} row={row} />
+            <Row key={row.id} row={row} handleDeleteSale={handleDeleteSale} />
           ))}
         </TableBody>
       </Table>
+      {sales.length === 0 && (
+        <span className="noSalesFound">Nenhuma venda encontrada.</span>
+      )}
     </TableContainer>
   );
 }

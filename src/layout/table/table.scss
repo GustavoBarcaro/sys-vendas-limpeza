@@ -29,6 +29,7 @@
     }
     font-size: 23px;
     color: #3a3a3a;
+    white-space: nowrap;
     font-family: inherit;
     font-weight: 400;
     border-style: solid;
@@ -73,4 +74,11 @@
     border-width: 0px 1px;
     border-color: #d8d6d6;
   }
+}
+
+.noSalesFound {
+  text-align: center;
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: #3a3a3a;
 }

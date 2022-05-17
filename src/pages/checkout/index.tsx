@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import styles from './checkout.module.scss';
 import CheckoutOptions from '../../layout/checkoutOptions';
 import SearchProducts from '../../layout/searchProducts';
@@ -19,9 +20,23 @@ function Checkout(): JSX.Element {
       })
       .catch(() => {
         // eslint-disable-next-line no-console
-        console.warn('ERROR getting products');
+        toast.error('Erro ao recuperar os produtos cadastrados!');
       });
   }, []);
+
+  const handleSaveSales = () => {
+    axios
+      .post(`${SERVICE_BASE_URI}/api/sales`, {
+        items: cart,
+      })
+      .then(() => {
+        toast.success('Venda cadastrada com sucesso!');
+        setCart([]);
+      })
+      .catch(() => {
+        toast.error('Falha ao cadastrar venda!');
+      });
+  };
 
   const handleAddProductInCart = (value: Product) => {
     const updatedCart = [...cart];
@@ -78,7 +93,10 @@ function Checkout(): JSX.Element {
         />
       </section>
 
-      <CheckoutOptions />
+      <CheckoutOptions
+        handleSaveSale={handleSaveSales}
+        disableConfirm={cart.length === 0}
+      />
     </main>
   );
 }
