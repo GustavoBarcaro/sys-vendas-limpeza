@@ -13,7 +13,9 @@
   color: #fff;
   background-color: #33cb5d;
   transition: filter 0.2s;
-
+  &.Mui-disabled {
+    background-color: #e5e5e5;
+  }
   &:hover {
     background-color: #33cb5d;
     filter: brightness(0.9);
@@ -21,7 +23,8 @@
 }
 
 .checkoutOptions {
-  margin-top: 2rem;
+  margin-top: auto;
+  padding-top: 2rem;
   width: 80%;
   display: flex;
   justify-content: space-between;

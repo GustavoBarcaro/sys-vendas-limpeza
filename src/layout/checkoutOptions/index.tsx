@@ -4,7 +4,15 @@ import Button from '@mui/material/Button';
 import { LeftArrowIcon } from '../../assets';
 import './checkoutOptions.scss';
 
-function CheckoutOptions(): JSX.Element {
+interface CheckoutOptionsProps {
+  handleSaveSale: () => void;
+  disableConfirm: boolean;
+}
+
+function CheckoutOptions({
+  handleSaveSale,
+  disableConfirm,
+}: CheckoutOptionsProps): JSX.Element {
   const navigate = useNavigate();
 
   const handleGoToSales = () => {
@@ -23,8 +31,9 @@ function CheckoutOptions(): JSX.Element {
       <Button
         className="confirmButton"
         onClick={() => {
-          // this is intentional
+          handleSaveSale();
         }}
+        disabled={disableConfirm}
       >
         Confirmar
       </Button>
